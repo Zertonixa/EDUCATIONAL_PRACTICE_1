@@ -1,15 +1,16 @@
 from fastapi import FastAPI
-from core.schemas.schemas import *
+from core.database.session import engine
+from core.models import vacancies
 
-from core.router.router import router as tasks_router
+from core.router.vacancies import router as tasks_router
+
+vacancies.Base.metadata.create_all(bind = engine)
 
 app = FastAPI()
+
 app.include_router(tasks_router)
 
 @app.get("/")
 async def home():
     return {"data": "Hello World"}
 
-@app.post("/")
-async def add_task(task: STaskAdd):
-    return {"data": task}
