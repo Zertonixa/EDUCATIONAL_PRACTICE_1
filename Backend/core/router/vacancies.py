@@ -32,19 +32,8 @@ async def full_db( payload: vsschema.VacancyBaseSchema, db: Session = Depends(ge
     return('updated_success')
 
 
-@router.post("/take-vacancies", status_code=status.HTTP_200_OK)
-async def take_vacancies(payload: vsschema.VacancySchema, db: Session = Depends(get_db)):
-    params = payload.dict()
-    filtred_params = {x: result for x, result in params.items() if result != None}
-    if len(filtred_params) > 0: 
-        result = db.execute(f'SELECT * FROM vacancies WHERE {list(filtred_params.keys())[0]} = "{filtred_params[list(filtred_params.keys())[0]]}"').fetchall()
-        if len(filtred_params) > 1:
-            for vacancy in result[::-1]:
-                for key in filtred_params:
-                    if vacancy[key] != filtred_params[key]:
-                        result.remove(vacancy)
-                        break
+@router.get("/take-vacancies", status_code=status.HTTP_200_OK)
+async def take_vacancies( db: Session = Depends(get_db)):
+    return db.query(vcmodel.Vacancies)[::]
 
 
-    else: result = db.query(vcmodel.Vacancies)
-    return result[::]

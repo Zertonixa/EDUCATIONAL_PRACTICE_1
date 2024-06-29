@@ -11,16 +11,9 @@ def get_vacancies(params):
     for i in range(0,20):
 
         url = "https://api.hh.ru/vacancies"
-        params = {
-            "text": params.get("text"),
-            "experience": params.get("experience"),
-            "eployment": params.get("employment"),
-            "salary": params.get("salary"),
-            "schedule": params.get("schedule"),
-            "page": i,
-            "area": params.get("area"),  
-            "per_page": 100,
-        }
+        params = params
+        params['page'] = i
+        params['per_page'] = 100
 
         headers = {
             "User-Agent": "Google",
