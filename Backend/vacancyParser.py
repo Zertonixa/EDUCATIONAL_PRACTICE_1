@@ -32,14 +32,14 @@ def get_vacancies(params):
                 vacancy_title = vacancy.get("name")
                 vacancy_url = vacancy.get("alternate_url")
                 vacancy_has_test = vacancy.get("has_test")
-                vacancy_contact = vacancy.get("contacts")
+                employment = vacancy.get("employment").get("name")
                 vacancy_salary = vacancy.get("salary")
                 schedule = vacancy.get("schedule").get("name")
                 company_name = vacancy.get("employer", {}).get("name")
                 professional_roles = vacancy.get("professional_roles")[0].get("name")
                 found_vacancies.append({"id": id_count, 'vacancy_id': vacancy_id, "title": vacancy_title.replace('"', "'"), "url": vacancy_url, "name": company_name,
-                                         "contacts": vacancy_contact, "test": vacancy_has_test, "salary": str(vacancy_salary),
-                                         "scheldure": schedule, "professional_roles": professional_roles})
+                                         "employment": employment, "test": vacancy_has_test, "salary": str(vacancy_salary),
+                                         "schedule": schedule, "professional_roles": professional_roles})
         else:
             break
 

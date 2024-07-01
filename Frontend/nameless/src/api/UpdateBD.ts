@@ -4,16 +4,16 @@ import axios from 'axios'
 
 interface updateBDProps{
     data: {
-        text?: string,
-        area?: string,
-        experience?: string,
-        employment?: string,
-        schedule?: string,
-        salary?: string
+        text?: string | null,
+        area?: string | null,
+        experience?: string | null,
+        employment?: string | null,
+        schedule?: string | null,
+        salary?: object | null
     }
 }
 
-export const updateBD = async (props: updateBDProps) => {
+export const updateBd = async (props: updateBDProps) => {
 
     await axios.post('http://127.0.0.1:8000/vacancies/update_db', {
         text: props.data.text,

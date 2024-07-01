@@ -13,7 +13,7 @@ export const DefaultBG  = (props: DefaultBGProps) => {
 
     return (
 
-        <Flex w = '1000px' h = '500px' bgColor = '#0f141c' direction = 'column' justifyContent = 'center' borderRadius = '25px' border = '3px solid #202133'>
+        <Flex w = '1000px' h = '500px' bgColor = '#0f141c' direction = 'column' alignItems = 'center' justifyContent = 'center' borderRadius = '10px' border = '3px solid #202133'>
             {props.children}
         </Flex> 
 

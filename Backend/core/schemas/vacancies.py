@@ -22,9 +22,9 @@ class VacancySchema(BaseModel):
     title: Optional[str] = None
     test: Optional[bool] = None
     url: Optional[str] = None
-    contacts: Optional[str] = None
     salary: Optional[str] = None
-    scheldure: Optional[str] = None
+    schedule: Optional[str] = None
+    employment: Optional[str] = None
     professional_roles: Optional[str] = None
 
     class Config:
