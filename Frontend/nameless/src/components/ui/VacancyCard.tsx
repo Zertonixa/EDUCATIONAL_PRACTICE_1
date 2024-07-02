@@ -62,7 +62,7 @@ export const VacancyCard = (props:VacancyCardProps) => {
                 </Button>
             </Flex>
             <Flex h = '150px'>
-                {packedData.map(el => <Flex w = '100%' h = '100%' direction = 'column' border = '1px solid #2b3138'>
+                {packedData.map((el,index) => <Flex key = {index} w = '100%' h = '100%' direction = 'column' border = '1px solid #2b3138'>
                     <Flex 
                         alignItems = 'center' 
                         justifyContent = 'center' 
@@ -71,7 +71,7 @@ export const VacancyCard = (props:VacancyCardProps) => {
                         color = '#6f7d93' 
                         fontSize = '18px' >{el[0]}</Flex>
 
-                    {el.slice(1).map(data => <Flex alignItems = 'center' marginLeft = '5px' h = '50px' textAlign = 'center' justifyContent = 'center' color = '#6f7d93' fontSize = '11px'>{data[0]} : {data[1]}</Flex>)}
+                    {el.slice(1).map((data,index) => <Flex key = {index} alignItems = 'center' marginLeft = '5px' h = '50px' textAlign = 'center' justifyContent = 'center' color = '#6f7d93' fontSize = '11px'>{data[0]} : {data[1]}</Flex>)}
                 </Flex>)}
                 <Flex w = '100%' h = '100%' direction = 'column' border = '1px solid #2b3138'>
                     <Flex w = '100%' h = '60px' alignItems = 'center' justifyContent = 'center' color = '#6f7d93' fontSize = '18px'>Условия</Flex>

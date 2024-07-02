@@ -47,11 +47,11 @@ export const UpdateWidget = () => {
                 </Flex>
                 <SearchInput placeholder = 'Ключевое слово' width = '800px' funct = {setData} title = 'text'></SearchInput>
                 <Flex  margin = '20px' h = '50px' w = '750px' alignItems = 'center' justifyContent = 'space-between'>
-                    {firstMassive.map(el => <DropDownMenu convert = {true} title = {el[0][1]}  funct={setData} data = {el[0][0]} list = {el.slice(1)}></DropDownMenu>)}
+                    {firstMassive.map((el,index) => <DropDownMenu key = {index} convert = {true} title = {el[0][1]}  funct={setData} data = {el[0][0]} list = {el.slice(1)}></DropDownMenu>)}
                 </Flex>
                 <SalaryInput title = 'salary' subtitle = 'currency' funct = {setData}></SalaryInput>
                 <Flex  margin = '20px' h = '50px'  w = '750px' alignItems = 'center' justifyContent = 'space-between'>
-                    {secondMassive.map(el =>  <DropDownMenu convert = {true} title = {el[0][1]} data = {el[0][0]} funct={setData} list = {el.slice(1)}></DropDownMenu>)}
+                    {secondMassive.map((el,index) =>  <DropDownMenu key = {index} convert = {true} title = {el[0][1]} data = {el[0][0]} funct={setData} list = {el.slice(1)}></DropDownMenu>)}
                 </Flex>
 
                 <Button

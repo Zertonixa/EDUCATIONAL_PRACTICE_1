@@ -46,8 +46,8 @@ export const VacaniesWidget = () => {
                         direction = 'column' 
                         alignItems = 'center' 
                         justifyContent = 'space-between'>
-                            {inputData.map(el => <SearchInput width = '350px' funct = {setData} title = {el[1]} placeholder = {el[0]} ></SearchInput>)}
-                            {dropdownData.map(el => <DropDownMenu convert = {el[0][0] === 'test' ? true : false} title = {el[0][1]} data = {el[0][0]} funct = {setData} list={el.slice(1)}></DropDownMenu>)}
+                            {inputData.map((el,index) => <SearchInput key = {index} width = '350px' funct = {setData} title = {el[1]} placeholder = {el[0]} ></SearchInput>)}
+                            {dropdownData.map((el,index) => <DropDownMenu key = {index} convert = {el[0][0] === 'test' ? true : false} title = {el[0][1]} data = {el[0][0]} funct = {setData} list={el.slice(1)}></DropDownMenu>)}
                     </Flex>
                 </Flex>
             </Flex>

@@ -27,7 +27,7 @@ interface BdTableProps{
 
 
 
-const filter = (data1, data2) => {
+const filter = (data1: ItemProps, data2: ItemProps) => {
     var f = true
     Object.keys(data2).map(el => (data2[el] !== null && data2[el] !== '') ? (data1[el].toLowerCase().includes(data2[el].toLowerCase()) ? 1 : f = false) : 1)
     return f
@@ -95,7 +95,7 @@ export const BdTable = (props: BdTableProps) => {
                         
         {vacancies !== undefined ? (<Flex w = '100%' direction = 'column' h = '100%' overflowY = 'scroll' >
             
-                                        {!loading ? (vacancies.length > 0 ? filtered.slice(0,count).map(vacancy => <VacancyCard data = {vacancy}></VacancyCard>) : <HollowBDTable></HollowBDTable>)
+                                        {!loading ? (vacancies.length > 0 ? filtered.slice(0,count).map((vacancy, index) => <VacancyCard key = {index} data = {vacancy}></VacancyCard>) : <HollowBDTable></HollowBDTable>)
                                         :<Flex h = '100%' alignItems = 'center' justifyContent = 'center' fontSize = '24px' color = '#6f7d93'>Загружаем</Flex>}
 
                                          <Flex h = '100px' alignItems = 'center' justifyContent = 'center'>
@@ -105,7 +105,7 @@ export const BdTable = (props: BdTableProps) => {
                                                                             w = '120px' 
                                                                             h = '40px' 
                                                                             _hover = {{bgColor: '#212338'}}
-                                                                            onClick = {() => {setCount(count + 5);console.log(filtered) }}>Загурзить ещё</Button> : ''}
+                                                                            onClick = {() => setCount(count + 5)}>Загурзить ещё</Button> : ''}
                                         </Flex>
 
                                     </Flex>)

@@ -21,7 +21,7 @@ export const HollowBDTable = () => {
                 _hover = {{bgColor: "#085178"}} 
                 _focus = {{bgColor: "#074261"}} 
                 color = '#fff' 
-                onClick = {() => window.location.assign('http://localhost:3000/updatedb')}>Перейти</Button>
+                onClick = {() => window.location.assign('http://localhost:3000')}>Перейти</Button>
         </Flex>
 
     )

@@ -54,7 +54,8 @@ export const DropDownMenu = (props: DropDownMenuProps) => {
                         {value}
                 </Flex>
                 { visible ? <Flex direction = 'column' position = 'absolute' marginTop = '35px'>
-                    {props.list.map(key => <Flex 
+                    {props.list.map((key,index) => <Flex
+                        key = {index} 
                         w = '150px' 
                         h = '35px'
                         fontSize = '14px'

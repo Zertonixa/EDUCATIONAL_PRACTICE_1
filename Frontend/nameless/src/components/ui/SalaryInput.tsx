@@ -40,7 +40,7 @@ export const SalaryInput = (props: SalaryInputProps) => {
                 />
 
                 <select onChange = {handleChangeCurrency} style = {{width: '60px', height: '40px', borderRadius: '3px', backgroundColor: '#23243b', marginLeft: '10px', color: '#000'}}>
-                    {list.map(el => <option  style={{color: '#000', height: '40px'}}>{el}</option>)}
+                    {list.map((el,index) => <option key = {index} style={{color: '#000', height: '40px'}}>{el}</option>)}
                 </select>
             
         </Flex>
