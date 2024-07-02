@@ -20,7 +20,7 @@ class VacancyBaseSchema(BaseModel):
 class VacancySchema(BaseModel): 
     name: Optional[str] = None
     title: Optional[str] = None
-    test: Optional[bool] = None
+    test: Optional[str] = None
     url: Optional[str] = None
     salary: Optional[str] = None
     schedule: Optional[str] = None

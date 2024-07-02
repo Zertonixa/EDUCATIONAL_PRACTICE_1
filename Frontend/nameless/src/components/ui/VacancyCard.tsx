@@ -1,14 +1,13 @@
 import React from "react";
 import { Flex, Button, Text } from "@chakra-ui/react";
 
-import { redirect } from "react-router-dom";
 
 
 interface VacancyCardProps{
     data: {
         name: string,
         title: string,
-        test: boolean,
+        test: string,
         url: string,
         employment: string,
         salary: string,
@@ -31,7 +30,7 @@ export const VacancyCard = (props:VacancyCardProps) => {
     const firstPack = ['Информация', ['Организация' ,props.data.name], ['Роль', props.data.professional_roles]]
     const secondPack = ['График', ['Рабочий день', props.data.schedule], ['Занятость', props.data.employment ]]
 
-    const salary:SalaryProps = eval('({obj:' + props.data.salary.replace("None", "'Не указано'").replace("False", "'Нет'").replace("True", "'Да'") + '})') 
+    const salary:SalaryProps = eval('({obj:' + props.data.salary.replace(/None/g, "'Не указано'").replace("False", "'Нет'").replace("True", "'Да'") + '})') 
 
     const packedData = [firstPack, secondPack]
 
@@ -51,7 +50,7 @@ export const VacancyCard = (props:VacancyCardProps) => {
 
                 <Text w = '85%'>{props.data.title}</Text>
                 <Button 
-                    onClick = {() => redirect(props.data.url)} 
+                    onClick = {() => window.open(props.data.url)} 
                     position = 'absolute' 
                     fontSize = '10px' 
                     left = '90%' w = '50px' 
@@ -68,11 +67,11 @@ export const VacancyCard = (props:VacancyCardProps) => {
                         alignItems = 'center' 
                         justifyContent = 'center' 
                         w = '100%' 
-                        h = '60px' 
+                        h = '50px' 
                         color = '#6f7d93' 
                         fontSize = '18px' >{el[0]}</Flex>
 
-                    {el.slice(1).map(data => <Flex alignItems = 'center' marginLeft = '5px' h = '40px' textAlign = 'center' justifyContent = 'center' color = '#6f7d93' fontSize = '12px'>{data[0]} : {data[1]}</Flex>)}
+                    {el.slice(1).map(data => <Flex alignItems = 'center' marginLeft = '5px' h = '50px' textAlign = 'center' justifyContent = 'center' color = '#6f7d93' fontSize = '11px'>{data[0]} : {data[1]}</Flex>)}
                 </Flex>)}
                 <Flex w = '100%' h = '100%' direction = 'column' border = '1px solid #2b3138'>
                     <Flex w = '100%' h = '60px' alignItems = 'center' justifyContent = 'center' color = '#6f7d93' fontSize = '18px'>Условия</Flex>
@@ -91,8 +90,8 @@ export const VacancyCard = (props:VacancyCardProps) => {
                         textAlign = 'center' 
                         justifyContent = 'center' 
                         color = '#6f7d93' 
-                        fontSize = '12px'>
-                            Тестовое : {props.data.test === true ? "Имеется" : "Не имеется" }
+                        fontSize = '11px'>
+                            Тестовое : {props.data.test === 'True' ? "Имеется" : "Не имеется" }
                     </Flex>
                 </Flex>
             </Flex>

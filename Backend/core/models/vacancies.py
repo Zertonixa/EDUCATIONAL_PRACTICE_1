@@ -10,7 +10,7 @@ class Vacancies(Base):
     vacancy_id = sa.Column(sa.Integer)
     name = sa.Column(sa.String)
     title = sa.Column(sa.String)
-    test = sa.Column(sa.Boolean)
+    test = sa.Column(sa.String)
     url = sa.Column(sa.String)
     employment = sa.Column(sa.String)
     salary = sa.Column(sa.String)

@@ -30,8 +30,8 @@ export const dataParams =  {
     ],
     test: [
         ["test", "Тестовое"],
-        ["true", "Имеется"],
-        ["false", "Не имеется"]
+        ["True", "Имеется"],
+        ["False", "Не имеется"]
     ]
 }
 

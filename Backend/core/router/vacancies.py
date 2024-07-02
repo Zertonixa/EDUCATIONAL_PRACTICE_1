@@ -18,6 +18,8 @@ router = APIRouter(
 @router.post("/update_db", status_code=status.HTTP_201_CREATED)
 async def full_db( payload: vsschema.VacancyBaseSchema, db: Session = Depends(get_db)):
     vacancies = get_vacancies(payload.dict()) #Результат парсинга
+    try: [maxId], = db.execute(f'SELECT id FROM vacancies ORDER BY id DESC LIMIT 1')
+    except: maxId = 0
     for vacancy in vacancies:
         new_id = vacancy['id'] #Новый id по которому сравниваем строку с новым значением
         old_vacancy_id = db.execute(f"SELECT vacancy_id FROM vacancies WHERE id = {new_id}").fetchone() #Старое значение id вакансии для провереи на наличие и совпадение с текущим значеним
@@ -29,7 +31,12 @@ async def full_db( payload: vsschema.VacancyBaseSchema, db: Session = Depends(ge
                 for key in vacancy:
                     db.execute(f'UPDATE vacancies SET {key} = "{vacancy[key]}" WHERE id = {new_id}')
                 db.commit()
-    return('updated_success')
+    if len(vacancies) < maxId:
+        for i in range(len(vacancies) + 1, maxId + 1):
+            db.execute(f'DELETE FROM vacancies WHERE "id" = {i}')
+        db.commit()
+    
+    return('updated_success')  
 
 
 @router.get("/take-vacancies", status_code=status.HTTP_200_OK)

@@ -16,7 +16,7 @@ export const Pages: React.FC = () => {
             <BrowserRouter>
                 <Layout>
                     <Routes>
-                        <Route path="/updatedb" element={<UpdateDB/>} />
+                        <Route path="" element={<UpdateDB/>} />
                         <Route path="/vacancies" element={<Vacancies/>} />
                     </Routes>
                 </Layout>

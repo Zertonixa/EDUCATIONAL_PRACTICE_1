@@ -6,11 +6,10 @@ import { UpdateWidget } from "../modules/updateWidget.tsx"
 export const UpdateDB = () => {
 
 
-    return(
-        <>
+    return( 
+        
         <UpdateWidget/>
 
-        </>
     )
 
 }

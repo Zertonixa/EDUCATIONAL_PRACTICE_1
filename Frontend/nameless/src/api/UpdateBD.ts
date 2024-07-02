@@ -10,10 +10,14 @@ interface updateBDProps{
         employment?: string | null,
         schedule?: string | null,
         salary?: object | null
-    }
+    },
+    openLoading: () => void,
+    closeLoading: () => void,
 }
 
 export const updateBd = async (props: updateBDProps) => {
+
+    props.openLoading()
 
     await axios.post('http://127.0.0.1:8000/vacancies/update_db', {
         text: props.data.text,
@@ -32,4 +36,6 @@ export const updateBd = async (props: updateBDProps) => {
     .catch(error => {
         console.log(error)
     })
+
+    props.closeLoading()
 }

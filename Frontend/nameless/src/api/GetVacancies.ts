@@ -1,11 +1,14 @@
 import axios from "axios";
 
-
+interface getVacanciesAPIProps{
+    openLoading: () => void,
+    closeLoading: () => void,
+}
 
 export interface dataProps{
     name: string,
     title: string,
-    test: boolean,
+    test: string,
     url: string,
     employment: string,
     salary: string,
@@ -13,9 +16,13 @@ export interface dataProps{
     professional_roles: string
 }
 
+
+
 let data: dataProps[]
 
-export const getVacanciesAPI = async () => {
+export const getVacanciesAPI = async (props: getVacanciesAPIProps) => {
+
+    props.openLoading()
 
     await axios.get('http://127.0.0.1:8000/vacancies/take-vacancies', {
     })
@@ -30,6 +37,8 @@ export const getVacanciesAPI = async () => {
         console.log(error)
     })
 
+    console.log(data)
+    props.closeLoading()
     return data
 
 }

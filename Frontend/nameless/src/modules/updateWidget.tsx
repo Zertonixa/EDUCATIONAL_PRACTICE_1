@@ -14,15 +14,37 @@ const firstMassive = [dataParams.area, dataParams.employment]
 const secondMassive = [dataParams.experience, dataParams.schedule]
 
 
+
 export const UpdateWidget = () => {
 
+    const [loading, setLoading] = React.useState(false)
+
     const [data, setData] = React.useState({salary: null, text: null, area: null, experience: null, employment: null, schedule: null, currency: null,})
+
+
+    const openLoading = () => {setLoading(true)}
+    const closeLoading = () => {setLoading(false)}
 
     return(
 
         <Flex>
             <DefaultBG>
-                <Flex color = ''></Flex>
+                <Flex alignItems = 'center' justifyContent = 'center' position = 'relative' w = '100%'>
+                    <Flex 
+                        alignItems = 'center' 
+                        justifyContent = 'center' 
+                        color = '#6f7d93' 
+                        marginBottom = '25px' 
+                        fontSize = '28px'>Парсинг вакансий</Flex>
+                    <Button 
+                        onClick = {() => window.open('http://localhost:3000/vacancies')} 
+                        color = '#000' w = '80px' h = '30px' bgColor = '#23243b' 
+                        position = 'absolute' 
+                        left = '85%' 
+                        top = '5px' 
+                        isLoading = {loading}
+                        _hover = {{bgColor: '#212338'}}>Показать</Button>
+                </Flex>
                 <SearchInput placeholder = 'Ключевое слово' width = '800px' funct = {setData} title = 'text'></SearchInput>
                 <Flex  margin = '20px' h = '50px' w = '750px' alignItems = 'center' justifyContent = 'space-between'>
                     {firstMassive.map(el => <DropDownMenu convert = {true} title = {el[0][1]}  funct={setData} data = {el[0][0]} list = {el.slice(1)}></DropDownMenu>)}
@@ -34,11 +56,11 @@ export const UpdateWidget = () => {
 
                 <Button
                     height = '35px'
-                    isLoading = {false}
+                    isLoading = {loading}
                     bgColor = "#0b6799"
                     color = 'inherit'
                     transition = '0.3s ease'
-                    onClick = {() => updateBd({data})}
+                    onClick = {() => updateBd({data, openLoading: openLoading, closeLoading: closeLoading})}
                     _hover={{bgColor: "#085178"}}
                     _active={{bgColor: "#074261"}}
             >Загрузить</Button>
