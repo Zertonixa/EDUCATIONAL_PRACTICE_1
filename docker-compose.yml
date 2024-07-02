@@ -1,0 +1,17 @@
+version: "3.8"
+
+services:
+
+    server:
+
+        build: /Backend
+
+        ports:
+            - 8000:8000
+
+    client:
+
+        build: /Frontend/nameless
+
+        ports:
+            - 3000:3000

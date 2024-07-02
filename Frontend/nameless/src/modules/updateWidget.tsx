@@ -37,7 +37,7 @@ export const UpdateWidget = () => {
                         marginBottom = '25px' 
                         fontSize = '28px'>Парсинг вакансий</Flex>
                     <Button 
-                        onClick = {() => window.open('http://localhost:3000/vacancies')} 
+                        onClick = {() => window.location.href = '/vacancies'} 
                         color = '#000' w = '80px' h = '30px' bgColor = '#23243b' 
                         position = 'absolute' 
                         left = '85%' 
