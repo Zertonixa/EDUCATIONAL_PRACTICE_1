@@ -1,8 +1,8 @@
 FROM python:3.11
 
-COPY . .
+WORKDIR /usr/app/back
 
-WORKDIR .
+COPY . .
 
 RUN pip install -r requirements.txt
 
