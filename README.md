@@ -9,6 +9,8 @@ git clone https://github.com/Zertonixa/EDUCATIONAL_PRACTICE_1.git && cd EDUCATIO
 <br/>
 - Сформировать и запустить приложение, используя docker
 <br/>
-docker-compose up -d build
+docker compose build
+<br/>
+docker compose up
 <br/>
 - Открыть в браузере адрес http://localhost:3000/
