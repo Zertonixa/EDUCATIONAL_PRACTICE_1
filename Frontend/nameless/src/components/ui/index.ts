@@ -1,0 +1,6 @@
+export { DropDownMenu } from './DropDownMenu.tsx'
+export { SearchInput } from './input.tsx'
+export { DefaultBG } from './DefaultBG.tsx'
+export  { SalaryInput } from './SalaryInput.tsx'
+export { VacancyCard } from './VacancyCard.tsx'
+export { HollowBDTable } from './HollowBD.tsx'
