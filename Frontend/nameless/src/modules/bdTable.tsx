@@ -37,14 +37,15 @@ export const BdTable = (props: BdTableProps) => {
 
     const [vacancies, setVacancies] = React.useState<dataProps[]>([])
 
-    const [loading, setLoading] = React.useState(false)
-    const openLoading = () => {setLoading(true)}
+    const [loading, setLoading] = React.useState(false) //Состояние для отображения загрузки на кнопках
+    const openLoading = () => {setLoading(true)} 
     const closeLoading = () => {setLoading(false)}
 
-    const [count, setCount] = React.useState(4)
+    const [count, setCount] = React.useState(4) //Состояние для кнопки подгрузки блоков
 
-    const [filtered, setFiltered] = React.useState<dataProps[]>([]);
+    const [filtered, setFiltered] = React.useState<dataProps[]>([]); //Состояние фильтрации 
 
+    //Привязка филтров к useEffect для изменения состояния при изменении вакансий и фильтров
     React.useEffect(() => {
 
             vacancies !== undefined ?  setFiltered(vacancies.filter((vacancy) => filter(vacancy, props.data))) : console.log('БД лягла')
@@ -53,6 +54,7 @@ export const BdTable = (props: BdTableProps) => {
         },[vacancies, props.data])
     
     
+    //Привязка состояния вакансий для повторного рендера таблицы по завершении запроса
     React.useEffect(() => {
         
         getVacanciesAPI({openLoading: openLoading, closeLoading: closeLoading}).then(result => setVacancies(result))
@@ -90,15 +92,17 @@ export const BdTable = (props: BdTableProps) => {
                                 position = 'absolute'
                                 left = '93%'
                                 onClick = {() => {setVacancies([]);getVacanciesAPI({openLoading: openLoading, closeLoading: closeLoading}).then(result => setVacancies(result))}} /*В ивент лупе промис идёт позже => переделать кнопку*/
-                                ><TfiReload size = {20}></TfiReload></Flex>
+                                ><TfiReload size = {20}></TfiReload></Flex> {/* Кнопка для повторного запроса в бд */}
                     </Flex>
                         
-        {vacancies !== undefined ? (<Flex w = '100%' direction = 'column' h = '100%' overflowY = 'scroll' >
+        {vacancies !== undefined ? (<Flex w = '100%' direction = 'column' h = '100%' overflowY = 'scroll' > {/* Проверка наличия вакансий */}
             
-                                        {!loading ? (vacancies.length > 0 ? filtered.slice(0,count).map((vacancy, index) => <VacancyCard key = {index} data = {vacancy}></VacancyCard>) : <HollowBDTable></HollowBDTable>)
+                                        {!loading ?  //Проверка выполнения запроса, вывод таблицы/надписи о загрузке 
+                                            (vacancies.length > 0 ? filtered.slice(0,count).map((vacancy, index) => <VacancyCard key = {index} data = {vacancy}></VacancyCard>) //Проверка наличия данных в таблице и вывод карточки/информации по результатам
+                                            : <HollowBDTable></HollowBDTable>)
                                         :<Flex h = '100%' alignItems = 'center' justifyContent = 'center' fontSize = '24px' color = '#6f7d93'>Загружаем</Flex>}
 
-                                         <Flex h = '100px' alignItems = 'center' justifyContent = 'center'>
+                                         <Flex h = '100px' alignItems = 'center' justifyContent = 'center'> {/* Кнопка подгрузки карточек, если они ещё остались */}
                                             {count < filtered.length ? <Button 
                                                                             color = '#000' 
                                                                             bgColor = '#23243b' 

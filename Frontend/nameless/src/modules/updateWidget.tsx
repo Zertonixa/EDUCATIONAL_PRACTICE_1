@@ -9,16 +9,17 @@ import { Button } from "@chakra-ui/react";
 import { dataParams } from "../components/maps/params.ts";
 
 
-const firstMassive = [dataParams.area, dataParams.employment]
+const firstMassive = [dataParams.area, dataParams.employment]  //Запаковка данных для map
 
-const secondMassive = [dataParams.experience, dataParams.schedule]
+const secondMassive = [dataParams.experience, dataParams.schedule]  //Запаковка данных для map
 
 
 
 export const UpdateWidget = () => {
 
-    const [loading, setLoading] = React.useState(false)
+    const [loading, setLoading] = React.useState(false) //Отоброжение кнопки загрузки
 
+    //Параметры парсинга
     const [data, setData] = React.useState({salary: null, text: null, area: null, experience: null, employment: null, schedule: null, currency: null,})
 
 
@@ -43,14 +44,14 @@ export const UpdateWidget = () => {
                         left = '85%' 
                         top = '5px' 
                         isLoading = {loading}
-                        _hover = {{bgColor: '#212338'}}>Показать</Button>
+                        _hover = {{bgColor: '#212338'}}>Показать</Button> {/* Кнопка перехода на страницу с отображением */}
                 </Flex>
                 <SearchInput placeholder = 'Ключевое слово' width = '800px' funct = {setData} title = 'text'></SearchInput>
-                <Flex  margin = '20px' h = '50px' w = '750px' alignItems = 'center' justifyContent = 'space-between'>
+                <Flex  margin = '20px' h = '50px' w = '750px' alignItems = 'center' justifyContent = 'space-between'> {/* Элемент с первыми выпадающими списками */}
                     {firstMassive.map((el,index) => <DropDownMenu key = {index} convert = {true} title = {el[0][1]}  funct={setData} data = {el[0][0]} list = {el.slice(1)}></DropDownMenu>)}
                 </Flex>
                 <SalaryInput title = 'salary' subtitle = 'currency' funct = {setData}></SalaryInput>
-                <Flex  margin = '20px' h = '50px'  w = '750px' alignItems = 'center' justifyContent = 'space-between'>
+                <Flex  margin = '20px' h = '50px'  w = '750px' alignItems = 'center' justifyContent = 'space-between'> {/* Элемент со вторыми выпадающими списками */}
                     {secondMassive.map((el,index) =>  <DropDownMenu key = {index} convert = {true} title = {el[0][1]} data = {el[0][0]} funct={setData} list = {el.slice(1)}></DropDownMenu>)}
                 </Flex>
 

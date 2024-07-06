@@ -7,14 +7,15 @@ import { dataParams } from "../components/maps/params.ts";
 
 
 
-const dropdownData = [dataParams.employment, dataParams.test, dataParams.schedule]
+const dropdownData = [dataParams.employment, dataParams.test, dataParams.schedule] //Запаковка для map
 
-const inputData = [["Организация", "name"], ["Роль", "professional_roles"]]
+const inputData = [["Организация", "name"], ["Роль", "professional_roles"]] 
 
 
 export const VacaniesWidget = () => {
 
 
+    //Параметры филтрации
     const [data, setData] = React.useState({name: null, title: null, test: null, url: null, employment: null, salary: null, schedule: null, professional_roles: null})
     
 

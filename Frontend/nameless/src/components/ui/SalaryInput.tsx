@@ -16,9 +16,9 @@ export const SalaryInput = (props: SalaryInputProps) => {
 
 
 
-    const handleChangeCurrency = (event) => {props.funct(data => ({...data, [props.subtitle]: event.target.value}))}
+    const handleChangeCurrency = (event) => {props.funct(data => ({...data, [props.subtitle]: event.target.value}))}    //Изменение состояния зарплаты
 
-    const handleChange = (event) => {props.funct(data => ({...data, [props.title]: event.target.value}))}
+    const handleChange = (event) => {props.funct(data => ({...data, [props.title]: event.target.value}))}    //Изменение состояния валюты
 
 
     return(
