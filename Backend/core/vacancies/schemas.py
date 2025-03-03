@@ -2,7 +2,7 @@ from pydantic import BaseModel
 from typing import Optional
 
 
-class VacancyBaseSchema(BaseModel): 
+class VacancyBaseSchema(BaseModel):
     text: Optional[str] = None
     area: Optional[str] = None
     experience: Optional[str] = None
@@ -11,13 +11,10 @@ class VacancyBaseSchema(BaseModel):
     salary: Optional[str] = None
 
     class Config:
-        schema_extra = {
-            "example": {
-            }
-        }
+        schema_extra = {"example": {}}
 
 
-class VacancySchema(BaseModel): 
+class VacancySchema(BaseModel):
     name: Optional[str] = None
     title: Optional[str] = None
     test: Optional[str] = None
@@ -28,7 +25,4 @@ class VacancySchema(BaseModel):
     professional_roles: Optional[str] = None
 
     class Config:
-        schema_extra = {
-            "example": {
-            }
-        }
+        schema_extra = {"example": {}}

@@ -1,17 +1,16 @@
 version: "3.8"
 
 services:
+  server:
+    build:
+      context: ./Backend
+    ports:
+      - "8000:8000"
+    depends_on:
+      - client
 
-    server:
-
-        build: /Backend
-
-        ports:
-            - 8000:8000
-
-    client:
-
-        build: /Frontend/nameless
-
-        ports:
-            - 3000:3000
+  client:
+    build:
+      context: ./Frontend/nameless
+    ports:
+      - "3000:3000"

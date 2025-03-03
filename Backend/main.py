@@ -1,11 +1,9 @@
 from fastapi import FastAPI
-from core.database.session import engine
-from core.models import vacancies
+from database import engine, Base
 from fastapi.middleware.cors import CORSMiddleware
+from core.vacancies.router import router as tasks_router
 
-from core.router.vacancies import router as tasks_router
-
-vacancies.Base.metadata.create_all(bind = engine)
+Base.metadata.create_all(bind = engine)
 
 app = FastAPI()
 

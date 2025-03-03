@@ -24,7 +24,7 @@ export const getVacanciesAPI = async (props: getVacanciesAPIProps) => {
 
     props.openLoading()
 
-    await axios.get('http://127.0.0.1:8000/vacancies/take-vacancies', {
+    await axios.get('http://127.0.0.1:8000/vacancies', {
     })
     .then(response => {
         console.log(response)

@@ -1,12 +1,11 @@
 import sqlalchemy as sa
-from .base import Base
-
+from database import Base
 
 
 class Vacancies(Base):
     __tablename__ = "vacancies"
 
-    id = sa.Column(sa.Integer, primary_key = True)
+    id = sa.Column(sa.Integer, primary_key=True)
     vacancy_id = sa.Column(sa.Integer)
     name = sa.Column(sa.String)
     title = sa.Column(sa.String)

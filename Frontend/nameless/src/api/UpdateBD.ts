@@ -19,7 +19,7 @@ export const updateBd = async (props: updateBDProps) => {
 
     props.openLoading()
 
-    await axios.post('http://127.0.0.1:8000/vacancies/update_db', {
+    await axios.post('http://127.0.0.1:8000/vacancies', {
         text: props.data.text,
         area: props.data.area,
         experince: props.data.area,
