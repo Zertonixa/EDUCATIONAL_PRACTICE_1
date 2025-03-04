@@ -2,10 +2,13 @@ from fastapi import FastAPI
 from database import engine, Base
 from fastapi.middleware.cors import CORSMiddleware
 from core.vacancies.router import router as tasks_router
+from core.error_handlers import register_exception_handlers
 
 Base.metadata.create_all(bind = engine)
 
 app = FastAPI()
+
+register_exception_handlers(app)
 
 app.include_router(tasks_router)
 

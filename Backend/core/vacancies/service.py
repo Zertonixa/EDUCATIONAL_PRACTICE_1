@@ -3,23 +3,30 @@ import pip._vendor.requests as requests
 from .models import Vacancies
 from sqlalchemy.orm import Session
 
+
 def update_or_insert_vacancy(vacancy: dict, table: Type[Vacancies], db: Session):
     new_id = vacancy["id"]
     old_vacancy = db.query(table).filter(table.id == new_id).first()
-    
+
     if old_vacancy is None:
         db.add(table(**vacancy))
     else:
         if old_vacancy.vacancy_id != vacancy["vacancy_id"]:
             for key, value in vacancy.items():
                 setattr(old_vacancy, key, value)
-    
+
     db.commit()
 
-def clean_old_vacancies(vacancies: List[Vacancies], table: Type[Vacancies], db: Session):
+
+def clean_old_vacancies(
+    vacancies: List[Vacancies], table: Type[Vacancies], db: Session
+):
     existing_ids = {vacancy["id"] for vacancy in vacancies}
-    db.query(table).filter(~table.id.in_(existing_ids)).delete(synchronize_session=False)
+    db.query(table).filter(~table.id.in_(existing_ids)).delete(
+        synchronize_session=False
+    )
     db.commit()
+
 
 def get_vacancies(params):
     found_vacancies = []
