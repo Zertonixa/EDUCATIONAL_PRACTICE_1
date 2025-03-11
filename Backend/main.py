@@ -1,8 +1,8 @@
 from fastapi import FastAPI
 from database import engine, Base
 from fastapi.middleware.cors import CORSMiddleware
-from core.vacancies.router import router as tasks_router
-from core.error_handlers import register_exception_handlers
+from Backend.vacancies.router import router as tasks_router
+from Backend.vacancies.error_handlers import register_exception_handlers
 
 Base.metadata.create_all(bind = engine)
 
